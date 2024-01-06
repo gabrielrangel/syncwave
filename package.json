@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/gabrielrangel/syncwave/issues"
   },
-  "homepage": "https://github.com/gabrielrangel/syncwave#readme"
+  "homepage": "https://github.com/gabrielrangel/syncwave#readme",
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
 }
