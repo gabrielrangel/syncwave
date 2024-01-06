@@ -1,0 +1,26 @@
+{
+  "name": "syncwave",
+  "version": "1.0.0",
+  "description": "TypeScript-based API designed to simplify playlist synchronization between music streaming providers",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielrangel/syncwave.git"
+  },
+  "keywords": [
+    "spotify",
+    "apple",
+    "music",
+    "playlists",
+    "sync"
+  ],
+  "author": "Gabriel Rangel",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/gabrielrangel/syncwave/issues"
+  },
+  "homepage": "https://github.com/gabrielrangel/syncwave#readme"
+}
