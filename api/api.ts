@@ -1,16 +1,26 @@
-import express, { json, urlencoded } from 'express'
-import { RegisterRoutes } from '../config/routes'
+import express, {
+    json,
+    urlencoded,
+    Response as ExResponse,
+    Request as ExRequest,
+} from 'express';
+import swaggerUi from 'swagger-ui-express';
+import { RegisterRoutes } from '../config/routes';
 
-export const api = express()
+export const api = express();
 
-// Use body parser to read sent json payloads
 api.use(
     urlencoded({
         extended: true,
     })
-)
-api.use(json())
+);
 
-RegisterRoutes(api)
+api.use(json());
 
-export default api
+api.use('/docs', swaggerUi.serve, async (_req: ExRequest, res: ExResponse) =>
+    res.send(swaggerUi.generateHTML(await import('../config/swagger.json')))
+);
+
+RegisterRoutes(api);
+
+export default api;

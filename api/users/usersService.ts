@@ -1,6 +1,6 @@
-import { User } from './user'
+import { User } from './user';
 
-export type UserCreationParams = Pick<User, 'email' | 'name' | 'phoneNumbers'>
+export type UserCreationParams = Pick<User, 'email' | 'name' | 'phoneNumbers'>;
 
 export class UsersService {
     public get(id: number, name?: string): User {
@@ -10,7 +10,7 @@ export class UsersService {
             name: name ?? 'Jane Doe',
             status: 'Happy',
             phoneNumbers: [],
-        }
+        };
     }
 
     public create(userCreationParams: UserCreationParams): User {
@@ -18,6 +18,6 @@ export class UsersService {
             id: Math.floor(Math.random() * 10000), // Random
             status: 'Happy',
             ...userCreationParams,
-        }
+        };
     }
 }
