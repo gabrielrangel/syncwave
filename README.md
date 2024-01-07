@@ -4,32 +4,34 @@ SyncWave is a TypeScript-based API designed to simplify playlist synchronization
 
 ## Features
 
-- **Seamless Synchronization:** Effortlessly sync your favorite playlists between Spotify and Apple Music.
-- **User-Friendly Authentication:** Simple and secure authentication process for user convenience.
-- **Versatile and Robust:** TypeScript-powered backend for reliable playlist management.
+-   **Seamless Synchronization:** Effortlessly sync your favorite playlists between Spotify and Apple Music.
+-   **User-Friendly Authentication:** Simple and secure authentication process for user convenience.
+-   **Versatile and Robust:** TypeScript-powered backend for reliable playlist management.
 
 ## Getting Started
 
 1. Clone the repository.
-   ```bash
-   git clone https://github.com/yourusername/SyncWave.git
-   ```
+
+    ```bash
+    git clone https://github.com/yourusername/SyncWave.git
+    ```
 
 2. Install dependencies.
-   ```bash
-   npm install
-   ```
+
+    ```bash
+    npm install
+    ```
 
 3. Configure environment variables. See `.env.example` for reference.
 
 4. Start the server.
-   ```bash
-   npm start
-   ```
+    ```bash
+    npm start
+    ```
 
 ## Usage
 
-- Detailed API documentation available at `/api-docs`.
+-   Detailed API documentation available at `/api-docs`.
 
 ## Contributing
 

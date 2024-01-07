@@ -1,29 +1,50 @@
 {
-  "name": "syncwave",
-  "version": "1.0.0",
-  "description": "TypeScript-based API designed to simplify playlist synchronization between music streaming providers",
-  "main": "index.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gabrielrangel/syncwave.git"
-  },
-  "keywords": [
-    "spotify",
-    "apple",
-    "music",
-    "playlists",
-    "sync"
-  ],
-  "author": "Gabriel Rangel",
-  "license": "SEE LICENSE IN LICENSE",
-  "bugs": {
-    "url": "https://github.com/gabrielrangel/syncwave/issues"
-  },
-  "homepage": "https://github.com/gabrielrangel/syncwave#readme",
-  "devDependencies": {
-    "typescript": "^4.9.5"
-  }
+    "author": "Gabriel Rangel",
+    "bugs": {
+        "url": "https://github.com/gabrielrangel/syncwave/issues"
+    },
+    "description": "TypeScript-based API designed to simplify playlist synchronization between music streaming providers",
+    "devDependencies": {
+        "eslint": "^8.2.0",
+        "eslint-config-airbnb": "^19.0.4",
+        "eslint-config-node": "^4.1.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-import": "^2.25.3",
+        "eslint-plugin-jsx-a11y": "^6.5.1",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^5.1.2",
+        "eslint-plugin-react": "^7.28.0",
+        "eslint-plugin-react-hooks": "^4.3.0",
+        "husky": "^8.0.3",
+        "lint-staged": "^15.2.0",
+        "prettier": "^3.1.1",
+        "typescript": "^4.9.5"
+    },
+    "homepage": "https://github.com/gabrielrangel/syncwave#readme",
+    "keywords": [
+        "spotify",
+        "apple",
+        "apple music",
+        "music",
+        "playlists",
+        "sync"
+    ],
+    "license": "SEE LICENSE IN LICENSE",
+    "lint-staged": {
+        "**/*": "yarn format",
+        "*.{ts,tsx,js}": "yarn lint"
+    },
+    "main": "index.ts",
+    "name": "syncwave",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gabrielrangel/syncwave.git"
+    },
+    "scripts": {
+        "format": "prettier --write .",
+        "lint": "npx eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
+        "prepare": "npx husky install",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "version": "1.0.0"
 }
