@@ -1,8 +1,11 @@
+import { provide } from 'inversify-binding-decorators';
+import TYPES from '../../types/types';
 import { User } from './user';
 
 export type UserCreationParams = Pick<User, 'email' | 'name' | 'phoneNumbers'>;
 
-export class UsersService {
+@provide(TYPES.UsersService)
+export default class UsersService {
     public get(id: number, name?: string): User {
         return {
             id,
@@ -21,3 +24,5 @@ export class UsersService {
         };
     }
 }
+
+export { UsersService };

@@ -1,33 +1,36 @@
+import { inject } from 'inversify';
 import {
-    Body,
-    Controller,
-    Get,
-    Path,
-    Post,
-    Query,
-    Route,
-    SuccessResponse,
-} from 'tsoa';
+    interfaces,
+    controller,
+    httpGet,
+    httpPost,
+    queryParam,
+    requestBody,
+    requestParam,
+} from 'inversify-express-utils';
 import { User } from './user';
 import { UsersService, UserCreationParams } from './usersService';
+import TYPES from '../../types/types';
 
-@Route('users')
-export class UsersController extends Controller {
-    @Get('{userId}')
+@controller('/users')
+export class UsersController implements interfaces.Controller {
+    constructor(
+        @inject(TYPES.UsersService) private usersService: UsersService
+    ) {}
+
+    @httpGet('/:userId')
     public async getUser(
-        @Path() userId: number,
-        @Query() name?: string
+        @requestParam('userId') userId: number,
+        @queryParam('name') name?: string
     ): Promise<User> {
-        return new UsersService().get(userId, name);
+        return this.usersService.get(userId, name);
     }
 
-    @SuccessResponse('201', 'Created') // Custom success response
-    @Post()
+    @httpPost('/')
     public async createUser(
-        @Body() requestBody: UserCreationParams
+        @requestBody() body: UserCreationParams
     ): Promise<void> {
-        this.setStatus(201); // set return status 201
-        new UsersService().create(requestBody);
+        this.usersService.create(body);
         return;
     }
 }

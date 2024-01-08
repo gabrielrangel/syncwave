@@ -5,13 +5,14 @@
         "prettier",
         "plugin:node/recommended"
     ],
-    "ignorePatterns": ["config/routes.ts"],
+    "ignorePatterns": ["config/routes.ts", "dist"],
     "parserOptions": {
         "project": "./tsconfig.json"
     },
     "plugins": ["prettier", "@typescript-eslint"],
     "rules": {
         "class-methods-use-this": "off",
+        "eslintimport/extensions": "off",
         "func-names": "off",
         "no-console": "off",
         "no-process-exit": "off",

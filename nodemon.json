@@ -1,5 +1,6 @@
 {
     "exec": "ts-node index.ts",
-    "watch": ["api"],
-    "ext": "ts"
+    "watch": ["*.ts", "*.json", "*.js"],
+    "ext": "ts",
+    "ignore": ["dist", "./config/routes.ts"]
 }

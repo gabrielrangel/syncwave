@@ -4,14 +4,20 @@
         "url": "https://github.com/gabrielrangel/syncwave/issues"
     },
     "dependencies": {
+        "dotenv": "^16.3.1",
         "express": "^4.18.2",
-        "r": "^0.0.5",
-        "swagger-ui-express": "^5.0.0",
-        "tsoa": "^6.0.0"
+        "inversify": "^6.0.2",
+        "inversify-binding-decorators": "^4.0.0",
+        "inversify-express-utils": "^6.4.6",
+        "lodash": "^4.17.21",
+        "reflect-metadata": "^0.2.1",
+        "swagger-ui-express": "^5.0.0"
     },
     "description": "TypeScript-based API designed to simplify playlist synchronization between music streaming providers",
     "devDependencies": {
+        "@types/connect": "^3.4.38",
         "@types/express": "^4.17.21",
+        "@types/lodash": "^4.14.202",
         "@types/node": "^20.10.6",
         "@types/swagger-ui-express": "^4.1.6",
         "@typescript-eslint/eslint-plugin": "^6.0.0",
@@ -60,12 +66,11 @@
         "url": "git+https://github.com/gabrielrangel/syncwave.git"
     },
     "scripts": {
-        "build": "tsoa spec-and-routes && tsc",
-        "dev": "concurrently \"nodemon \" \"nodemon  -x tsoa spec-and-routes\"",
+        "dev": "nodemon",
         "format": "prettier --write .",
         "lint": "eslint \"**/*.{js,ts,tsx}\"",
         "prepare": "husky install",
-        "start": "node build/src/server.js",
+        "start": "node dist/index.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "version": "1.0.0"
