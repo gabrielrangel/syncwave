@@ -1,5 +1,6 @@
 interface SyncWaveProcessEnv {
     API_PORT?: number;
+    API_URI?: string;
 }
 
 declare namespace NodeJS {

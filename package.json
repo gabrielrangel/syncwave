@@ -59,14 +59,17 @@
         "**/*": "npm run format",
         "**/*.{js,ts,tsx}": "npm run lint"
     },
-    "main": "index.ts",
+    "main": "dist/index.js",
     "name": "syncwave",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/gabrielrangel/syncwave.git"
     },
     "scripts": {
-        "dev": "nodemon",
+        "buidl": "tsc",
+        "build:watch": "tsc -w",
+        "dev": "concurrently npm:build:watch npm:dev:server",
+        "dev:server": "nodemon",
         "format": "prettier --write .",
         "lint": "eslint \"**/*.{js,ts,tsx}\"",
         "prepare": "husky install",

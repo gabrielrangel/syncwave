@@ -5,7 +5,7 @@
         "prettier",
         "plugin:node/recommended"
     ],
-    "ignorePatterns": ["config/routes.ts", "dist"],
+    "ignorePatterns": ["node_modules", "dist"],
     "parserOptions": {
         "project": "./tsconfig.json"
     },

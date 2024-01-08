@@ -17,4 +17,8 @@ container.load(buildProviderModule());
 new InversifyExpressServer(container)
     .setConfig(configureExpress)
     .build()
-    .listen(config.API_PORT);
+    .listen(config.API_PORT, () =>
+        console.log(
+            `Server listeting on ${config.API_URI} port ${config.API_PORT}`
+        )
+    );
