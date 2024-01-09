@@ -1,28 +1,47 @@
-import { configDotenv, DotenvConfigOptions } from 'dotenv';
+import { configDotenv } from 'dotenv';
 import { existsSync } from 'fs';
-import { camelCase } from 'lodash';
+import _ from 'lodash';
 
-process.env.NODE_ENV = 'development';
-const { NODE_ENV } = process.env;
+(function () {
+    if (!_.isEmpty(process.env.dotEnvHasLoaded)) {
+        return;
+    }
 
-export const config: DotenvConfigOptions = {
-    path: (() => {
-        const argmentEnvFile = process.argv[2];
-        if (existsSync(argmentEnvFile)) {
-            console.log({ argmentEnvFile });
-            return argmentEnvFile;
-        }
+    const argvEnvMap: Record<string, string> = {
+        '-p': 'API_PORT',
+        '-port': 'API_PORT',
+        '-u': 'API_URI',
+        '-uri': 'API_URI',
+        '-e': 'NODE_ENV',
+        '-env': 'NODE_ENV',
+        '-environment': 'NODE_ENV',
+    };
 
-        const ambientEnvFile = `.env.${camelCase(NODE_ENV)}`;
-        if (existsSync(ambientEnvFile)) {
-            console.log({ ambientEnvFile });
-            return ambientEnvFile;
-        }
+    const processEnv: Record<string, string> = _.chain(process.argv)
+        .clone()
+        .reverse()
+        .chunk(2)
+        .reduce((acc, [v, k]) => _.merge(acc, { [argvEnvMap[k]]: v }), {})
+        .defaults({ NODE_ENV: 'development', dotEnvHasLoaded: 'true' })
+        .value();
 
-        return '.env';
-    })(),
-};
+    delete processEnv.undefined;
+    const { NODE_ENV } = processEnv;
 
-configDotenv(config);
+    configDotenv({
+        path: (() => {
+            const argmentEnvFile = process.argv[2];
+            if (existsSync(argmentEnvFile)) {
+                return argmentEnvFile;
+            }
 
-export default config;
+            const ambientEnvFile = `.env.${_.camelCase(NODE_ENV)}`;
+            if (existsSync(ambientEnvFile)) {
+                return ambientEnvFile;
+            }
+
+            return '.env';
+        })(),
+    });
+    Object.assign(process.env, processEnv);
+})();

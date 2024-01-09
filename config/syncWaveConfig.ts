@@ -1,3 +1,5 @@
+import '../lib/dotenv';
+
 export type NodeEnv = 'development' | 'production' | 'test';
 
 export class SyncWaveConfig implements SyncWaveProcessEnv {
