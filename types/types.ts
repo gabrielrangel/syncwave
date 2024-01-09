@@ -6,6 +6,7 @@ export const types = {
     Express: Symbol('Express'),
     Server: Symbol('Server'),
     UsersService: Symbol('UsersService'),
+    Logger: Symbol('Logger'),
 };
 
 export default types;

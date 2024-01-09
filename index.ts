@@ -1,24 +1,18 @@
 import 'reflect-metadata';
-import { InversifyExpressServer } from 'inversify-express-utils';
+import './api/users/usersController';
 import { Container } from 'inversify';
 import { buildProviderModule } from 'inversify-binding-decorators';
-import configureExpress from './config/express.config';
+import { Logger } from 'winston';
+import createWinstonFactory from './lib/winston';
 import AppConfig from './config/syncWaveConfig';
 import TYPE from './types/types';
-
-import './api/users/usersController';
+import Server from './api/server';
 
 const container = new Container();
 const config = new AppConfig();
 
 container.bind<AppConfig>(TYPE.AppConfig).toConstantValue(config);
+container.bind<Logger>(TYPE.Logger).toDynamicValue(createWinstonFactory);
 container.load(buildProviderModule());
 
-new InversifyExpressServer(container)
-    .setConfig(configureExpress)
-    .build()
-    .listen(config.API_PORT, () =>
-        console.log(
-            `Server listeting on ${config.API_URI} port ${config.API_PORT}`
-        )
-    );
+Server.factory(container).setConfig().start();
