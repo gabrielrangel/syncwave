@@ -1,13 +1,26 @@
 {
-    "extends": ["airbnb", "prettier", "plugin:node/recommended"],
-    "plugins": ["prettier"],
+    "extends": [
+        "airbnb-base",
+        "airbnb-typescript/base",
+        "prettier",
+        "plugin:node/recommended"
+    ],
+    "ignorePatterns": ["node_modules", "dist"],
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "plugins": ["prettier", "@typescript-eslint"],
     "rules": {
-        "prettier/prettier": "error",
-        "no-unused-vars": "warn",
-        "no-console": "off",
+        "class-methods-use-this": "off",
+        "eslintimport/extensions": "off",
         "func-names": "off",
+        "no-console": "off",
         "no-process-exit": "off",
+        "no-unused-vars": "warn",
+        "no-useless-return": "off",
+        "node/no-missing-import": "off",
+        "node/no-unsupported-features/es-syntax": "off",
         "object-shorthand": "off",
-        "class-methods-use-this": "off"
+        "prettier/prettier": "error"
     }
 }
